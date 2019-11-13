@@ -33,4 +33,23 @@ public class Workset {
     @JoinColumn(name = "software_id")
     private Activity fourthLevelActivity;
 
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder(firstLevelActivity.getName());
+        String space = " - ";
+
+        if (secondLevelActivity != null) {
+            builder.append(space).append(secondLevelActivity.getName());
+        }
+
+        if (thirdLevelActivity != null) {
+            builder.append(space).append(thirdLevelActivity.getName());
+        }
+
+        if (fourthLevelActivity != null) {
+            builder.append(space).append(fourthLevelActivity.getName());
+        }
+
+        return builder.toString();
+    }
 }
