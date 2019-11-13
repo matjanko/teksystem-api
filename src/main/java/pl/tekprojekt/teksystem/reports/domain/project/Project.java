@@ -28,4 +28,8 @@ public class Project {
     @Column(name = "project_name")
     private String name;
 
+    @Override
+    public String toString() {
+        return String.format("%s - %s - %s", index.toString(), customer.getName(), name);
+    }
 }
