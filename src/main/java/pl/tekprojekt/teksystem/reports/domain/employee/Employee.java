@@ -25,4 +25,9 @@ public class Employee {
 
     @Column(name = "employee_surname")
     private String lastName;
+
+    @Override
+    public String toString() {
+        return String.format("%s %s", firstName, lastName);
+    }
 }
