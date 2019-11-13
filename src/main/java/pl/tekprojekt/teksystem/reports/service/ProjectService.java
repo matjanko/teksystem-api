@@ -1,6 +1,8 @@
 package pl.tekprojekt.teksystem.reports.service;
 
 import org.springframework.stereotype.Service;
+import pl.tekprojekt.teksystem.reports.domain.projecteffort.ProjectEffortRepository;
+import pl.tekprojekt.teksystem.reports.dto.ProjectEffortDto;
 import pl.tekprojekt.teksystem.reports.dto.ProjectNameDto;
 import pl.tekprojekt.teksystem.reports.domain.project.ProjectRepository;
 
