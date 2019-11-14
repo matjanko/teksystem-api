@@ -3,6 +3,7 @@ package pl.tekprojekt.teksystem.reports.service;
 import org.springframework.stereotype.Service;
 import pl.tekprojekt.teksystem.reports.domain.timerecord.TimeRecordRepository;
 import pl.tekprojekt.teksystem.reports.dto.TimeRecordDto;
+import pl.tekprojekt.teksystem.reports.utils.MappingUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,24 +23,7 @@ public class TimeRecordService {
     }
 
     public List<TimeRecordDto> findAllTimeRecordsByEmployeeId(Long employeeId) {
-        return timeRecordRepository.findAllTimeRecordsByEmployeeIdOrderByStartTimeDesc(employeeId).stream().map(tr -> {
-            TimeRecordDto timeRecordDto = new TimeRecordDto();
-            timeRecordDto.setEmployeeName(tr.getEmployee().toString());
-            timeRecordDto.setProjectName(tr.getProject().toString());
-
-            if (tr.getProjectStage() != null) {
-                timeRecordDto.setProjectStageName(tr.getProjectStage().getName());
-            }
-
-            if (tr.getWorkset() != null) {
-                timeRecordDto.setWorksetName(tr.getWorkset().toString());
-            }
-
-            timeRecordDto.setAddCost(tr.getIsAddCost());
-            timeRecordDto.setMistake(tr.getIsMistake());
-            timeRecordDto.setStartTime(tr.getStartTime().toString());
-            timeRecordDto.setEndTime(tr.getEndTime().toString());
-            return timeRecordDto;
-        }).collect(Collectors.toList());
+        return timeRecordRepository.findAllTimeRecordsByEmployeeIdOrderByStartTimeDesc(employeeId).stream()
+                .map(MappingUtils::convertFromEntity).collect(Collectors.toList());
     }
 }
