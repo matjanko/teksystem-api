@@ -3,7 +3,7 @@ package pl.tekprojekt.teksystem.reports.domain.timerecord;
 import lombok.Getter;
 import pl.tekprojekt.teksystem.reports.domain.employee.Employee;
 import pl.tekprojekt.teksystem.reports.domain.project.Project;
-import pl.tekprojekt.teksystem.reports.domain.projectstage.ProjectStage;
+import pl.tekprojekt.teksystem.reports.domain.model.ProjectStage;
 import pl.tekprojekt.teksystem.reports.domain.workset.Workset;
 
 import javax.persistence.*;

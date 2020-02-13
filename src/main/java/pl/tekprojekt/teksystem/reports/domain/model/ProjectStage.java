@@ -1,5 +1,6 @@
-package pl.tekprojekt.teksystem.reports.domain.projectstage;
+package pl.tekprojekt.teksystem.reports.domain.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import javax.persistence.Column;
@@ -15,6 +16,7 @@ import javax.persistence.Table;
 @Getter
 @Entity
 @Table(name = "project_stages")
+@AllArgsConstructor
 public class ProjectStage {
 
     @Id @Column(name = "project_stage_id")
