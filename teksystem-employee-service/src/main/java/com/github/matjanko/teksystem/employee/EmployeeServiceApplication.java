@@ -1,13 +1,13 @@
-package com.github.matjanko.teksystem.employers;
+package com.github.matjanko.teksystem.employee;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EmployersServiceApplication {
+public class EmployeeServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EmployersServiceApplication.class, args);
+		SpringApplication.run(EmployeeServiceApplication.class, args);
 	}
 
 }

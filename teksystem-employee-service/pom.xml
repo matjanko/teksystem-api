@@ -8,11 +8,11 @@
 		<version>2.2.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.github.matjanko.teksystem.employers</groupId>
-	<artifactId>teksystem-employer-service</artifactId>
+	<groupId>com.github.matjanko.teksystem.employee</groupId>
+	<artifactId>teksystem-employee-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>teksystem-employer-service</name>
-	<description>Demo project for Spring Boot</description>
+	<name>teksystem-employee-service</name>
+	<description></description>
 
 	<properties>
 		<java.version>1.8</java.version>
