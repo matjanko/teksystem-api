@@ -1,4 +1,4 @@
-package com.github.matjanko.teksystem.employee.model.employee;
+package com.github.matjanko.teksystem.employee.model.entities;
 
 import lombok.*;
 
