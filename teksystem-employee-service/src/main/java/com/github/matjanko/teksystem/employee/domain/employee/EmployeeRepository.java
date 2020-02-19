@@ -1,6 +1,5 @@
-package com.github.matjanko.teksystem.employee.model.repositories;
+package com.github.matjanko.teksystem.employee.domain.employee;
 
-import com.github.matjanko.teksystem.employee.model.entities.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.validation.constraints.NotBlank;

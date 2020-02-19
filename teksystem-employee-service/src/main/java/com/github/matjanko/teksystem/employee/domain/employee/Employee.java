@@ -1,4 +1,4 @@
-package com.github.matjanko.teksystem.employee.model.entities;
+package com.github.matjanko.teksystem.employee.domain.employee;
 
 import lombok.*;
 
@@ -33,6 +33,9 @@ public class Employee {
     @NotBlank @NonNull
     @Column(name = "employee_login", nullable = false, unique = true, length = 50)
     private String username;
+
+    @Enumerated(EnumType.STRING)
+    private EmployeeRole role;
 
     @Column(name = "employee_email")
     @Email
