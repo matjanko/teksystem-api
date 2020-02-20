@@ -1,6 +1,7 @@
 package com.github.matjanko.teksystem.employee.services;
 
 import com.github.matjanko.teksystem.employee.domain.employee.EmployeeRole;
+import com.github.matjanko.teksystem.employee.exceptions.IllegalRoleNameException;
 import com.github.matjanko.teksystem.employee.services.impl.PolishEmployeeRoleService;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
@@ -67,5 +68,12 @@ public class PolishEmployeeRoleServiceTest {
         assertEquals(expectedRole, actualRole);
     }
 
+    @Test(expected = IllegalRoleNameException.class)
+    public void shouldThrowIllegalRoleNameExceptionWhenGetRoleTest() {
+        // when
+        employeeRoleService.getRole("wrongName");
+        // then
+        // throw exception
+    }
 
 }
