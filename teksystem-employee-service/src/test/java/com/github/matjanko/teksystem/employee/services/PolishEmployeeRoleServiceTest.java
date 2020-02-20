@@ -3,28 +3,25 @@ package com.github.matjanko.teksystem.employee.services;
 import com.github.matjanko.teksystem.employee.domain.employee.EmployeeRole;
 import com.github.matjanko.teksystem.employee.exceptions.IllegalRoleNameException;
 import com.github.matjanko.teksystem.employee.services.impl.PolishEmployeeRoleService;
-import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author matjanko
  *
  */
-
-@RunWith(JUnitParamsRunner.class)
 public class PolishEmployeeRoleServiceTest {
 
     private EmployeeRoleService employeeRoleService;
 
-    @Before
+    @BeforeEach
     public void initPolishEmployeeRoleService() {
         employeeRoleService = new PolishEmployeeRoleService();
     }
@@ -40,8 +37,8 @@ public class PolishEmployeeRoleServiceTest {
         assertEquals(expectedRoleNames, actualRoleNames);
     }
 
-    @Test
-    @Parameters({
+    @ParameterizedTest
+    @CsvSource({
             "BOSS, zarząd",
             "MANAGER, kierownik",
             "ASSISTANT, asystent",
@@ -54,8 +51,8 @@ public class PolishEmployeeRoleServiceTest {
         assertEquals(expectedName, actualName);
     }
 
-    @Test
-    @Parameters({
+    @ParameterizedTest
+    @CsvSource({
             "zarząd, BOSS",
             "kierownik, MANAGER",
             "asystent, ASSISTANT",
@@ -68,12 +65,11 @@ public class PolishEmployeeRoleServiceTest {
         assertEquals(expectedRole, actualRole);
     }
 
-    @Test(expected = IllegalRoleNameException.class)
+    @Test
     public void shouldThrowIllegalRoleNameExceptionWhenGetRoleTest() {
-        // when
-        employeeRoleService.getRole("wrongName");
         // then
-        // throw exception
+        assertThrows(IllegalRoleNameException.class,
+                () -> employeeRoleService.getRole("wrongName"));
     }
 
 }
