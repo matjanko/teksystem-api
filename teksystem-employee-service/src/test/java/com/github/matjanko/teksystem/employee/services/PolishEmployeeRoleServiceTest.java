@@ -1,12 +1,15 @@
 package com.github.matjanko.teksystem.employee.services;
 
+import com.github.matjanko.teksystem.employee.domain.employee.EmployeeRole;
 import com.github.matjanko.teksystem.employee.services.impl.PolishEmployeeRoleService;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -15,11 +18,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  *
  */
 
+@RunWith(JUnitParamsRunner.class)
 public class PolishEmployeeRoleServiceTest {
 
     private EmployeeRoleService employeeRoleService;
 
-    @BeforeEach
+    @Before
     public void initPolishEmployeeRoleService() {
         employeeRoleService = new PolishEmployeeRoleService();
     }
@@ -34,5 +38,20 @@ public class PolishEmployeeRoleServiceTest {
         // then
         assertEquals(expectedRoleNames, actualRoleNames);
     }
+
+    @Test
+    @Parameters({
+            "BOSS, zarząd",
+            "MANAGER, kierownik",
+            "ASSISTANT, asystent",
+            "SECRETARY, sekretariat"
+    })
+    public void getRoleNameTest(EmployeeRole employeeRole, String expectedName) {
+        // when
+        String actualName = employeeRoleService.getRoleName(employeeRole);
+        // then
+        assertEquals(expectedName, actualName);
+    }
+
 
 }
