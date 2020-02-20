@@ -1,6 +1,7 @@
 package com.github.matjanko.teksystem.employee.services;
 
 import com.github.matjanko.teksystem.employee.domain.employee.EmployeeRole;
+import com.github.matjanko.teksystem.employee.dto.RoleDto;
 import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.NotNull;
@@ -12,12 +13,12 @@ import java.util.List;
  */
 
 @Service
-public interface EmployeeRoleService {
+public interface RoleService {
 
-    List<String> getAllRoleNames();
+    List<RoleDto> getAllRoles();
 
-    String getRoleName(EmployeeRole role);
+    RoleDto getRole(EmployeeRole role);
 
-    EmployeeRole getRole(@NotNull String roleName);
+    EmployeeRole getRole(@NotNull RoleDto role);
 
 }

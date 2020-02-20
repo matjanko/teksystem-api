@@ -1,8 +1,9 @@
 package com.github.matjanko.teksystem.employee.services;
 
 import com.github.matjanko.teksystem.employee.domain.employee.EmployeeRole;
-import com.github.matjanko.teksystem.employee.exceptions.IllegalRoleNameException;
-import com.github.matjanko.teksystem.employee.services.impl.PolishEmployeeRoleService;
+import com.github.matjanko.teksystem.employee.dto.RoleDto;
+import com.github.matjanko.teksystem.employee.exceptions.IllegalRoleException;
+import com.github.matjanko.teksystem.employee.services.impl.PolishRoleService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,22 +18,25 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author matjanko
  *
  */
-public class PolishEmployeeRoleServiceTest {
+public class PolishRoleServiceTest {
 
-    private EmployeeRoleService employeeRoleService;
+    private RoleService roleService;
 
     @BeforeEach
     public void initPolishEmployeeRoleService() {
-        employeeRoleService = new PolishEmployeeRoleService();
+        roleService = new PolishRoleService();
     }
 
     @Test
     public void getAllRoleNamesTest() {
         // given
-        List<String> expectedRoleNames = Arrays.asList(
-                "asystent", "kierownik", "sekretariat", "zarząd");
+        List<RoleDto> expectedRoleNames = Arrays.asList(
+                new RoleDto("asystent"),
+                new RoleDto("kierownik"),
+                new RoleDto("sekretariat"),
+                new RoleDto("zarząd"));
         // when
-        List<String> actualRoleNames = employeeRoleService.getAllRoleNames();
+        List<RoleDto> actualRoleNames = roleService.getAllRoles();
         // then
         assertEquals(expectedRoleNames, actualRoleNames);
     }
@@ -46,9 +50,9 @@ public class PolishEmployeeRoleServiceTest {
     })
     public void getRoleNameTest(EmployeeRole employeeRole, String expectedName) {
         // when
-        String actualName = employeeRoleService.getRoleName(employeeRole);
+        RoleDto actualRole = roleService.getRole(employeeRole);
         // then
-        assertEquals(expectedName, actualName);
+        assertEquals(new RoleDto(expectedName), actualRole);
     }
 
     @ParameterizedTest
@@ -60,16 +64,15 @@ public class PolishEmployeeRoleServiceTest {
     })
     public void getRoleTest(String roleName, EmployeeRole expectedRole) {
         // when
-        EmployeeRole actualRole = employeeRoleService.getRole(roleName);
+        EmployeeRole actualRole = roleService.getRole(new RoleDto(roleName));
         // then
         assertEquals(expectedRole, actualRole);
     }
 
     @Test
-    public void shouldThrowIllegalRoleNameExceptionWhenGetRoleTest() {
+    public void shouldThrowIllegalRoleExceptionWhenGetRoleTest() {
         // then
-        assertThrows(IllegalRoleNameException.class,
-                () -> employeeRoleService.getRole("wrongName"));
+        assertThrows(IllegalRoleException.class,
+                () -> roleService.getRole(new RoleDto("wrongName")));
     }
-
 }
