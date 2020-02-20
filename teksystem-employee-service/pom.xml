@@ -12,7 +12,7 @@
 	<artifactId>teksystem-employee-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>teksystem-employee-service</name>
-	<description></description>
+	<description>Employee service</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -37,6 +37,18 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>pl.pragmatists</groupId>
+			<artifactId>JUnitParams</artifactId>
+			<version>1.1.1</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
