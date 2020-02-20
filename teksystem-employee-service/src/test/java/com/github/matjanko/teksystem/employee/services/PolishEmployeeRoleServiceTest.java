@@ -53,5 +53,19 @@ public class PolishEmployeeRoleServiceTest {
         assertEquals(expectedName, actualName);
     }
 
+    @Test
+    @Parameters({
+            "zarząd, BOSS",
+            "kierownik, MANAGER",
+            "asystent, ASSISTANT",
+            "sekretariat, SECRETARY"
+    })
+    public void getRoleTest(String roleName, EmployeeRole expectedRole) {
+        // when
+        EmployeeRole actualRole = employeeRoleService.getRole(roleName);
+        // then
+        assertEquals(expectedRole, actualRole);
+    }
+
 
 }
