@@ -13,36 +13,38 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "employees")
-@Getter @RequiredArgsConstructor @AllArgsConstructor
+@Getter @Setter
 @EqualsAndHashCode(of = "id")
 @ToString
 public class Employee {
 
-    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "EMPLOYER_SEQUENCE")
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "EMPLOYEE_SEQ")
     @Column(name = "employee_id")
     private Long id;
 
-    @NotBlank @NonNull
+    @NotBlank
     @Column(name = "employee_name", nullable = false, length = 50)
     private String firstName;
 
-    @NotBlank @NonNull
+    @NotBlank
     @Column(name = "employee_surname", nullable = false, length = 50)
     private String lastName;
 
-    @NotBlank @NonNull
+    @NotBlank
     @Column(name = "employee_login", nullable = false, unique = true, length = 50)
     private String username;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "employee_role", nullable = false)
     private EmployeeRole role;
 
     @Column(name = "employee_email")
     @Email
     private String email;
 
-    @Column(name = "is_hired", nullable = false)
-    private Boolean isHired = true;
+    @Column(name = "is_active", nullable = false)
+    private Boolean isActive = true;
 
     protected Employee() {}
 
